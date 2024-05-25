@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  font-weight: 400;
+  font-display: swap;
+  src: local("Pretendard Regular"),
+    url("/fonts/Pretendard-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "BMDOHYEON";
+  font-display: swap;
+  src: local("BMDOHYEON"), url("/fonts/BMDOHYEON_ttf.ttf") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  font-display: swap;
+  src: local("S-CoreDream-3Light"), url("/fonts/SCDream3.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "S-CoreDream-4Regular";
+  font-display: swap;
+  src: local("S-CoreDream-4Regular"), url("/fonts/SCDream4.otf") format("otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ghanachocolate";
+  font-display: swap;
+  src: local("Ghanachocolate"), url("/fonts/Ghanachocolate.ttf") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hambak";
+  font-display: swap;
+  src: local("Hambak"), url("/fonts/Hambak.ttf") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  color: rgb(12 10 9);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  .font-outline-red {
+    -webkit-text-stroke: 3px #ef7373;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
