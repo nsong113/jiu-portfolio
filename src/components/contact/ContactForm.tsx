@@ -33,7 +33,7 @@ const ContactForm = () => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    sendContactEmail(form) //
+    sendContactEmail(form)
       .then(() => {
         setContactModal({
           message: "메일을 성공적으로 보냈습니다.",

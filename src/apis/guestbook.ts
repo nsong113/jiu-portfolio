@@ -7,17 +7,20 @@ interface Content {
 }
 
 interface Emoji {
-  emoji: number;
+  emoji: string;
+}
+
+interface Create {
+  content: string;
+  emoji: string;
 }
 
 //content가져오기
-
 export const getContent = async (): Promise<Content[]> => {
-  //   const supabase = createSupabaseBrowserClient();
-
   let { data: guestbook, error } = await supabase
     .from("guestbook")
-    .select("content");
+    .select("content")
+    .order("id", { ascending: false });
 
   if (error) {
     console.error("Error fetching content:", error);
@@ -30,16 +33,36 @@ export const getContent = async (): Promise<Content[]> => {
 
 //emoji 가져오기
 export const getEmoji = async (): Promise<Emoji[]> => {
-  //   const supabase = createSupabaseBrowserClient();
-
   let { data: guestbook, error } = await supabase
     .from("guestbook")
-    .select("emoji");
+    .select("emoji")
+    .order("id", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching content:", error);
+    throw error;
+  }
+  console.log("emoji", guestbook);
+  return guestbook ?? [];
+};
+
+// 추가하기
+export const createContent = async (param: Create): Promise<Create[]> => {
+  console.log("param", param);
+  const { data, error } = await supabase
+    .from("guestbook")
+    .insert([
+      {
+        content: param.content,
+        emoji: param.emoji,
+      },
+    ])
+    .select();
 
   if (error) {
     console.error("Error fetching content:", error);
     throw error;
   }
 
-  return guestbook ?? [];
+  return data ?? [];
 };

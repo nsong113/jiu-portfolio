@@ -6,10 +6,11 @@ export type EmailData = {
   message: string;
 };
 
+// SMTP 서버 설정
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
+  host: "gmail",
+  // port: 465,
+  // secure: true,
   auth: {
     user: "nsong113@gmail.com",
     pass: process.env.AUTH_PASS,
