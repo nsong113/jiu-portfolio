@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { projects } from "../../../../data/projects/projectData";
+import { projects } from "../../../data/projects/projectData";
 
 import todoList from "../../../../public/images/projects/todolist.png";
 import llmtaskui from "../../../../public/images/projects/llmtaskui.png";
 import anz from "../../../../public/images/projects/anz.png";
+import Image from "next/image";
 
 const ProjectPage = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -22,13 +23,12 @@ const ProjectPage = () => {
       </h2>
       <div className="space-y-20 ">
         {projects.map((project, i) => (
-          <article
-            key={project.title}
-            className="relative isolate flex flex-col gap-8 lg:flex-row"
-          >
-            <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
-              <img
+          <article key={project.title} className="relative isolate flex flex-col gap-8 lg:flex-row">
+            <div className="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-80 lg:shrink-0">
+              <Image
                 src={project.imageUrl}
+                width={400}
+                height={400}
                 alt="project main image"
                 className="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
               />
@@ -64,41 +64,14 @@ const ProjectPage = () => {
                     {project.title}
                   </Link>
                 </h3>
-                <p className="mt-5 text-sm leading-6 text-gray-600">
-                  {project.description}
-                </p>
+                <p className="mt-5 text-sm leading-6 text-gray-600">{project.description}</p>
                 <ul className="mt-10">
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[0]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[1]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[2]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[3]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[4]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[5]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[6]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[7]}
-                  </li>
-                  <li className="mt-2 text-sm leading-6 text-gray-600">
-                    {project.points[8]}
-                  </li>
+                  {project.points.map((point, i) => (
+                    <li key={i} className="mt-2 text-sm leading-6 text-gray-600">
+                      {point}
+                    </li>
+                  ))}
                 </ul>
-              </div>
-              <div className="mt-6 flex border-t border-gray-900/5 pt-6">
-                <div className="relative flex items-center gap-x-4"></div>
               </div>
             </div>
           </article>

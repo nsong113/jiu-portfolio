@@ -1,29 +1,23 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useState } from "react";
-import { ContactModalData } from "./ContactModal";
-import { sendContactEmail } from "@/service/contact";
-import dynamic from "next/dynamic";
 
 type Form = {
-  from: string;
+  name: string;
+  email: string;
   subject: string;
   message: string;
 };
 
-const ContactModal = dynamic(() => import("./ContactModal"));
-
 const DEFAULT_DATA = {
-  from: "",
+  name: "",
+  email: "",
   subject: "",
   message: "",
 };
 
 const ContactForm = () => {
   const [form, setForm] = useState<Form>(DEFAULT_DATA);
-  const [contactModal, setContactModal] = useState<ContactModalData | null>(
-    null
-  );
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -33,43 +27,57 @@ const ContactForm = () => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    sendContactEmail(form)
-      .then(() => {
-        setContactModal({
-          message: "메일을 성공적으로 보냈습니다.",
-          state: "success",
-        });
+    const formData = {
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message,
+    };
+
+    console.log(formData);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:7000/api/sendEmail");
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.onload = function () {
+      console.log(xhr.responseText);
+      if (xhr.responseText === "success") {
+        alert("Email sent");
         setForm(DEFAULT_DATA);
-      }) //
-      .catch(() => {
-        setContactModal({
-          message: "메일 전송에 실패했습니다. 다시 시도해주세요.",
-          state: "error",
-        });
-      })
-      .finally(() => {
-        setTimeout(() => {
-          setContactModal(null);
-        }, 3000);
-      });
+      } else {
+        alert("Something went wrong");
+      }
+    };
+
+    xhr.send(JSON.stringify(formData));
   };
 
   return (
     <section className="w-96 px-6">
-      {contactModal && <ContactModal contactModal={contactModal} />}
       <form
         onSubmit={onSubmit}
         className="w-full my-4 flex flex-col gap-2 p-4 rounded-xl bg-orange-100 mb-12"
       >
-        <label htmlFor="from" className="font-semibold mt-2">
+        <label htmlFor="name" className="font-semibold mt-2">
+          Your Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          value={form.name}
+          onChange={onChange}
+        />
+        <label htmlFor="email" className="font-semibold mt-2">
           Your Email
         </label>
         <input
           type="email"
-          id="from"
-          name="from"
+          id="email"
+          name="email"
           required
-          value={form.from}
+          value={form.email}
           onChange={onChange}
         />
         <label htmlFor="subject" className="font-semibold mt-2">
@@ -93,7 +101,9 @@ const ContactForm = () => {
           value={form.message}
           onChange={onChange}
         />
-        <button className="font-semibold hover:text-gray-500">Submit</button>
+        <button type="submit" className="font-semibold hover:text-gray-500">
+          Submit
+        </button>
       </form>
     </section>
   );

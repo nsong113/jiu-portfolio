@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { AnimatePresence, Variants, motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -9,8 +9,8 @@ import Image from "next/image";
 
 import useTypeword from "@/hooks/useTypeword";
 
-import ProfileImage from "../../../../public/images/main/IMG_2618.jpg";
-import { sentence } from "../../../../data/about/aboutData";
+import ProfileImage from "../../../public/images/main/IMG_2618.jpg";
+import { sentence } from "../../../data/about/aboutData";
 
 const SlotMachine = dynamic(() => import("@/components/about/SlotMachine"));
 const AboutContent = dynamic(() => import("@/components/about/AboutContent"));
@@ -88,9 +88,7 @@ const AboutPage = () => {
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 1 }}
           >
-            <p className="text-xl text-center font-ghanachocolate text-stone-800 md:text-4xl">
-              {onBoardText}
-            </p>
+            <p className="text-xl text-center font-ghanachocolate text-stone-800 md:text-4xl">{onBoardText}</p>
             <motion.span
               className="text-lg text-center font-scoreRegular mt-6 text-stone-800 sm:text-base md:text-xl"
               initial={{ opacity: 0 }}
@@ -104,20 +102,12 @@ const AboutPage = () => {
         )}
       </AnimatePresence>
       {!showInitialMessage && (
-        <motion.section
-          className="h-full"
-          variants={sectionVariants}
-          initial="hidden"
-          animate={controls}
-        >
+        <motion.section className="h-full" variants={sectionVariants} initial="hidden" animate={controls}>
           <div
             id="about"
             className="relative flex items-center gap-6 flex-col pt-16 selection:bg-brown_color md:flex-row sm:flex-row"
           >
-            <motion.div
-              className="flex flex-col w-full justify-center items-center basis-5/12"
-              variants={itemVariants}
-            >
+            <motion.div className="flex flex-col w-full justify-center items-center basis-5/12" variants={itemVariants}>
               <motion.p
                 className="my-1 text-3xl text-center md:text-5xl font-ghanachocolate absolute top-8 left-7 flex flex-col gap-1 md:gap-2 text-stone-800 md:top-5 md:left-10 sm:top-10 sm:left-18"
                 variants={messageItemVariants}
@@ -141,18 +131,10 @@ const AboutPage = () => {
                 />
               </div>
               <div className="w-full flex flex-row gap-5 text-xs mt-4 text-stone-600  justify-center selection:bg-stone-300 md:text-base">
-                <Link
-                  href="https://github.com/nsong113"
-                  target="_blank"
-                  className="hover:font-semibold"
-                >
+                <Link href="https://github.com/nsong113" target="_blank" className="hover:font-semibold">
                   GitHub
                 </Link>
-                <Link
-                  href="https://nsong113.tistory.com/119"
-                  target="_blank"
-                  className="hover:font-semibold"
-                >
+                <Link href="https://nsong113.tistory.com/119" target="_blank" className="hover:font-semibold">
                   Blog
                 </Link>
                 <Link
@@ -160,20 +142,15 @@ const AboutPage = () => {
                   target="_blank"
                   className="hover:font-semibold"
                 >
-                  Blog
+                  Notion
                 </Link>
               </div>
             </motion.div>
-            <motion.div
-              className="flex flex-col w-full md:w-2/3"
-              variants={itemVariants}
-            >
-              <p className="font-dohyeon text-stone-600 text-lg mb-8md:text-2xl">
-                About Me
-              </p>
+            <motion.div className="flex flex-col w-full md:w-2/3" variants={itemVariants}>
+              <p className="font-dohyeon text-stone-600 text-lg mb-8md:text-2xl">About Me</p>
               <SlotMachine sentence={sentence} />
               <AboutContent />
-              <p className="text-sm text-stone-500 mt-2">update。 2024.05.26</p>
+              <p className="text-sm text-stone-500 mt-2">update。 2024.06.07</p>
             </motion.div>
           </div>
           <ScrollDown />

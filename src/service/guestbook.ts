@@ -1,6 +1,5 @@
 "use client";
-import { supabase } from "@/lib/supabase";
-// import { createSupabaseBrowserClient } from "@/lib/supabase";
+import { supabase } from "@/service/supabase";
 
 interface Content {
   content: string;

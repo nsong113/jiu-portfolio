@@ -1,5 +1,8 @@
 import { StaticImageData } from "next/image";
-// import todoList from "../../public/images/projects/todolist.png";
+
+import llmtaskui from "../../public/images/projects/llmtaskui.png";
+import anz from "../../public/images/projects/anz.png";
+import nineCloud from "../../public/images/projects/nineCloud.png";
 
 interface Project {
   title: string;
@@ -27,7 +30,7 @@ interface Project {
   docsUrl: string;
   serviceUrl: string;
   images: number;
-  imageUrl: string;
+  imageUrl: StaticImageData;
 }
 
 export const projects: Project[] = [
@@ -54,7 +57,7 @@ export const projects: Project[] = [
     docsUrl: "",
     serviceUrl: "https://maum.ai/maum-gpt/llm-task",
     images: 1,
-    imageUrl: "llmtaskui",
+    imageUrl: llmtaskui,
   },
 
   {
@@ -80,7 +83,7 @@ export const projects: Project[] = [
     docsUrl: "",
     serviceUrl: "https://anz.maum.ai/",
     images: 1,
-    imageUrl: "anz",
+    imageUrl: anz,
   },
   {
     title: "Nine Cloud",
@@ -106,26 +109,6 @@ export const projects: Project[] = [
     docsUrl: "",
     serviceUrl: "",
     images: 1,
-    imageUrl: "anz",
+    imageUrl: nineCloud,
   },
-  //   {
-  //     title: "Todo List",
-  //     intro: "리엑트 기초 todoList 프로젝트",
-  //     description:
-  //       "제목과 내용을 입력하고 계획을 추가하면 리스트에 추가되며, 완료 버튼을 누르면 done으로 이동하고 삭제 버튼을 누르면 삭제됩니다.",
-  //     points: [
-  //       "RTK를 사용한 상태관리",
-  //       "기본 퍼블리싱과 삭제 취소 구현",
-  //       "header와 footer 컴포넌트 분리",
-  //     ],
-  //     startDate: "2023-10-29",
-  //     endDate: "2023-10-30",
-  //     featured: true,
-  //     stacks: ["react", "styledComponents", "redux", "vercel"],
-  //     githubUrl: "https://github.com/nsong113/todoList",
-  //     docsUrl: "",
-  //     serviceUrl: "https://todo-list-ver2.vercel.app",
-  //     images: 1,
-  //     imageUrl: "todoList",
-  //   },
 ];

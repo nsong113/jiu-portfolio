@@ -1,18 +1,18 @@
 import nodemailer from "nodemailer";
 
 export type EmailData = {
-  from: string;
-  subject: string;
-  message: string;
+  from?: string;
+  subject?: string;
+  message?: string;
 };
 
-// SMTP 서버 설정
 const transporter = nodemailer.createTransport({
-  host: "gmail",
-  // port: 465,
-  // secure: true,
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: false,
+
   auth: {
-    user: "nsong113@gmail.com",
+    user: process.env.AUTH_USER,
     pass: process.env.AUTH_PASS,
   },
 });
@@ -23,12 +23,14 @@ export async function sendEmail({ subject, from, message }: EmailData) {
     subject: `[Portfolio] ${subject}`,
     from,
     html: `
-    <h1>${subject}</h1>
-    <div>${message}</div>
-    <br/>
-    <p>보낸 사람: ${from}</p>
+      <h1>${subject}</h1>
+      <div>${message}</div>
+      <br/>
+      <p>보낸 사람: ${from}</p>
     `,
   };
+
+  console.log("Sending email with data:", mailData);
 
   return transporter.sendMail(mailData);
 }

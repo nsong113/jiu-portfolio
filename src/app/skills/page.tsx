@@ -3,7 +3,7 @@
 import React from "react";
 
 import SkillGrid from "@/components/skills/SkillGrid";
-import { skills } from "../../../../data/skills/skillData";
+import { skills } from "../../../data/skills/skillData";
 
 const SkillsPage = () => {
   return (

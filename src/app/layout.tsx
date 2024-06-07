@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-// import "@/styles/globals.css";
-import "./globals.css";
+import "@/styles/globals.css";
 
 import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
-
-import Image from "next/image";
 
 const pretendard = localFont({
   src: "../fonts/Pretendard-Regular.woff2",
@@ -42,7 +38,6 @@ export default function RootLayout({
           {children}
           <div id="_modal"></div>
         </main>
-        <Footer />
       </body>
     </html>
   );
