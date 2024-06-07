@@ -4,15 +4,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 import { projects } from "../../../data/projects/projectData";
-
-import todoList from "../../../../public/images/projects/todolist.png";
-import llmtaskui from "../../../../public/images/projects/llmtaskui.png";
-import anz from "../../../../public/images/projects/anz.png";
 import Image from "next/image";
 
 const ProjectPage = () => {
-  const [showTooltip, setShowTooltip] = useState(false);
-
   return (
     <section
       id="projects"
