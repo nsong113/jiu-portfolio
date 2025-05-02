@@ -8,7 +8,8 @@ const Header = () => {
 
   const linkIsActive = (route: string) => activeLink === route;
 
-  const navTitle = ["about", "skills", "projects", "guestbook", "contact"];
+  // const navTitle = ["about", "skills", "projects", "guestbook", "contact"];
+  const navTitle = ["about", "skills", "projects"];
 
   const handleLinkClick = (route: string) => {
     setActiveLink(route);

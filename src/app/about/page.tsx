@@ -88,7 +88,9 @@ const AboutPage = () => {
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 1 }}
           >
-            <p className="text-xl text-center font-ghanachocolate text-stone-800 md:text-4xl">{onBoardText}</p>
+            <p className="text-xl text-center font-ghanachocolate text-stone-800 md:text-4xl">
+              {onBoardText}
+            </p>
             <motion.span
               className="text-lg text-center font-scoreRegular mt-6 text-stone-800 sm:text-base md:text-xl"
               initial={{ opacity: 0 }}
@@ -102,12 +104,20 @@ const AboutPage = () => {
         )}
       </AnimatePresence>
       {!showInitialMessage && (
-        <motion.section className="h-full" variants={sectionVariants} initial="hidden" animate={controls}>
+        <motion.section
+          className="h-full"
+          variants={sectionVariants}
+          initial="hidden"
+          animate={controls}
+        >
           <div
             id="about"
-            className="relative flex items-center gap-6 flex-col pt-16 selection:bg-brown_color md:flex-row sm:flex-row"
+            className="relative flex items-center gap-6 flex-col pt-16 selection:bg-selection_color md:flex-row sm:flex-row"
           >
-            <motion.div className="flex flex-col w-full justify-center items-center basis-5/12" variants={itemVariants}>
+            <motion.div
+              className="flex flex-col w-full justify-center items-center basis-5/12"
+              variants={itemVariants}
+            >
               <motion.p
                 className="my-1 text-3xl text-center md:text-5xl font-ghanachocolate absolute top-8 left-7 flex flex-col gap-1 md:gap-2 text-stone-800 md:top-5 md:left-10 sm:top-10 sm:left-18"
                 variants={messageItemVariants}
@@ -130,27 +140,40 @@ const AboutPage = () => {
                   className="w-full h-full rounded-lg object-cover"
                 />
               </div>
-              <div className="w-full flex flex-row gap-5 text-xs mt-4 text-stone-600  justify-center selection:bg-stone-300 md:text-base">
-                <Link href="https://github.com/nsong113" target="_blank" className="hover:font-semibold">
+              <div className="flex flex-row justify-between text-xs mt-4 text-stone-600 bg-blueLight_color_pale w-80 rounded-xl  selection:bg-stone-300 md:text-base">
+                <Link
+                  href="https://github.com/nsong113"
+                  target="_blank"
+                  className="hover:font-semibold w-1/3 text-center px-8 p-2 rounded-xl hover:bg-blueLight_color_hover transition-all duration-200"
+                >
                   GitHub
                 </Link>
-                <Link href="https://nsong113.tistory.com/119" target="_blank" className="hover:font-semibold">
+                <Link
+                  href="https://nsong113.tistory.com/119"
+                  target="_blank"
+                  className="hover:font-semibold w-1/3 text-center px-8 p-2 rounded-xl hover:bg-blueLight_color_hover transition-all duration-200"
+                >
                   Blog
                 </Link>
                 <Link
                   href="https://twilight-riverbed-f04.notion.site/Visual-Studio-Code-d61786c493b6406f936359b6c1bab052?pvs=4"
                   target="_blank"
-                  className="hover:font-semibold"
+                  className="hover:font-semibold w-1/3 text-center px-8 p-2 rounded-xl hover:bg-blueLight_color_hover transition-all duration-200"
                 >
                   Notion
                 </Link>
               </div>
             </motion.div>
-            <motion.div className="flex flex-col w-full md:w-2/3" variants={itemVariants}>
-              <p className="font-dohyeon text-stone-600 text-lg mb-8md:text-2xl">About Me</p>
+            <motion.div
+              className="flex flex-col w-full md:w-2/3"
+              variants={itemVariants}
+            >
+              <p className="font-dohyeon text-stone-600 text-lg mb-8md:text-2xl">
+                About Me
+              </p>
               <SlotMachine sentence={sentence} />
               <AboutContent />
-              <p className="text-sm text-stone-500 mt-2">update。 2024.06.07</p>
+              <p className="text-sm text-stone-500 mt-2">update。 2025.05.02</p>
             </motion.div>
           </div>
           <ScrollDown />

@@ -8,8 +8,8 @@ interface Props {
 }
 function SkillCard({ skill: { stack, skillList } }: Props) {
   return (
-    <article className="border-brown_color border-[3px] lg:h-80 md:h-80 w-80 sm:w-auto md:w-60 lg:w-auto h-80 mx-auto">
-      <h3 className="text-redbrown_color font-scoreLight text-lg lg:text-xl md:text-base text-center p-4 font-semibold my-2">
+    <article className="border-blueLight_color_pale border-[3px] rounded-xl w-80 h-80 mx-auto transition-shadow duration-300 hover:shadow-md hover:shadow-blue-100 sm:w-auto md:w-60 lg:w-auto md:h-80 lg:h-80">
+      <h3 className="text-deep_pink_color font-scoreLight text-lg lg:text-xl md:text-base text-center p-4 font-semibold my-2">
         {stack}
       </h3>
       <div>

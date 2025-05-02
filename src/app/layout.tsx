@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${pretendard.className} min-h-screen bg-primary font-pretendard flex flex-col max-w-screen-2xl mx-auto overflow-x-hidden scrollbar-hide w-full selection:bg-blueLight_color`}
+        className={`${pretendard.className} min-h-screen bg-primary font-pretendard flex flex-col mx-auto overflow-x-hidden scrollbar-hide w-full selection:bg-blueLight_color`}
       >
         <Header />
         <main className="relative grow w-11/12 mx-auto md:w-4/5">

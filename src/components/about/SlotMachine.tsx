@@ -14,11 +14,14 @@ export default function SlotMachine({ sentence }: Props) {
   const textList = Array(5).fill(sentence).flat();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurIndex((prev) => {
-        return prev < textList.length - 1 - count ? prev + 1 : prev;
-      });
-    }, 10 * (curIndex + 1) * 0.7);
+    const interval = setInterval(
+      () => {
+        setCurIndex((prev) => {
+          return prev < textList.length - 1 - count ? prev + 1 : prev;
+        });
+      },
+      10 * (curIndex + 1) * 0.7
+    );
     return () => clearInterval(interval);
   }, [curIndex, count, textList.length]);
 
@@ -40,36 +43,37 @@ export default function SlotMachine({ sentence }: Props) {
   }
 
   return (
-    <div className="flex items-center sm:w-[340px] md:w-[450px] w-[300px] selection:bg-brown_color border-b">
+    <div className="flex items-center sm:w-[420px] md:w-[500px] w-[470px] selection:bg-brown_color border-b">
       <span className="md:text-xl sm:text-base text-sm text-stone-600 mr-2">
         저는
       </span>
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait">
         {textList.map((text, i) => {
+          if (i !== curIndex) return null;
+
           const isLast = i === textList.length - 1 - count;
+
           return (
-            i === curIndex && (
-              <motion.p
-                className="overflow-hidden  md:text-xl text-sm sm:text-base text-stone-600 md:w-[280px] w-[190px] sm:w-[220px]"
-                key={text}
-                custom={{ isLast }}
-                variants={variants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                transition={{
-                  duration: isLast ? 0.1 : 0.01,
-                  ease: isLast ? "easeInOut" : "linear",
-                }}
-              >
-                {text}
-              </motion.p>
-            )
+            <motion.p
+              key={`slot-${i}`}
+              className="overflow-hidden text-blue_color md:text-xl text-sm sm:text-base text w-[280px] md:w-[350px] sm:w-[270px]"
+              custom={{ isLast }}
+              variants={variants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{
+                duration: isLast ? 0.1 : 0.01,
+                ease: isLast ? "easeInOut" : "linear",
+              }}
+            >
+              {text}
+            </motion.p>
           );
         })}
       </AnimatePresence>
       <motion.button
-        className="ml-1 md:text-base text-xs text-stone-600"
+        className="ml-1 cursor-pointer md:text-base text-xs text-stone-600"
         onClick={handleClick}
         whileTap={{ scale: 0.9, scaleY: 1 }}
         whileHover={{ scaleY: -1 }}

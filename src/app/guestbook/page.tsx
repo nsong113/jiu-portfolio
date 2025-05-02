@@ -1,8 +1,20 @@
 "use client";
-import { useState, useEffect, ForwardRefExoticComponent, SVGProps } from "react";
+import {
+  useState,
+  useEffect,
+  ForwardRefExoticComponent,
+  SVGProps,
+} from "react";
 import Image from "next/image";
 
-import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions, Transition } from "@headlessui/react";
+import {
+  Label,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
 import {
   FaceFrownIcon,
   FaceSmileIcon as FaceSmileIconMini,
@@ -160,8 +172,13 @@ const GuestbookPage = () => {
   };
 
   return (
-    <div id="guestbook" className="mt-10 flex flex-col items-center justify-center selection:bg-brown_color pb-24 ">
-      <h2 className="my-2 font-dohyeon text-brown_color text-xl md:text-3xl selection:bg-redbrown_color">Guestbook</h2>
+    <div
+      id="guestbook"
+      className="mt-10 flex flex-col items-center justify-center selection:bg-selection_color pb-24 "
+    >
+      <h2 className="my-2 font-dohyeon text-brown_color text-xl md:text-3xl selection:bg-redbrown_color">
+        Guestbook
+      </h2>
       <div className="w-3/4 mt-10 ">
         <div className="min-w-0 flex-1 border-3">
           <form onSubmit={handlePost}>
@@ -191,7 +208,10 @@ const GuestbookPage = () => {
                             <span className="flex items-center justify-center">
                               {selected.value === null ? (
                                 <span>
-                                  <FaceSmileIconOutline className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
+                                  <FaceSmileIconOutline
+                                    className="h-6 w-6 flex-shrink-0"
+                                    aria-hidden="true"
+                                  />
                                   <span className="sr-only">Add your mood</span>
                                 </span>
                               ) : (
@@ -202,9 +222,14 @@ const GuestbookPage = () => {
                                       "flex h-8 w-8 items-center justify-center rounded-full"
                                     )}
                                   >
-                                    <selected.icon className="h-5 w-5 flex-shrink-0 text-white" aria-hidden="true" />
+                                    <selected.icon
+                                      className="h-5 w-5 flex-shrink-0 text-white"
+                                      aria-hidden="true"
+                                    />
                                   </span>
-                                  <span className="sr-only">{selected.name}</span>
+                                  <span className="sr-only">
+                                    {selected.name}
+                                  </span>
                                 </span>
                               )}
                             </span>
@@ -237,11 +262,16 @@ const GuestbookPage = () => {
                                       )}
                                     >
                                       <mood.icon
-                                        className={classNames(mood.iconColor, "h-5 w-5 flex-shrink-0")}
+                                        className={classNames(
+                                          mood.iconColor,
+                                          "h-5 w-5 flex-shrink-0"
+                                        )}
                                         aria-hidden="true"
                                       />
                                     </div>
-                                    <span className="ml-3 block truncate font-medium">{mood.value}</span>
+                                    <span className="ml-3 block truncate font-medium">
+                                      {mood.value}
+                                    </span>
                                   </div>
                                 </ListboxOption>
                               ))}
@@ -274,7 +304,11 @@ const GuestbookPage = () => {
             <div>
               {emoji.map((item, index) => {
                 const mood = moods.find((mood) => mood.name === item.emoji);
-                return <div key={index}>{mood?.icon && <mood.icon className="h-5 w-5 my-1" />}</div>;
+                return (
+                  <div key={index}>
+                    {mood?.icon && <mood.icon className="h-5 w-5 my-1" />}
+                  </div>
+                );
               })}
             </div>
           </div>
